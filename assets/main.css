@@ -1618,7 +1618,7 @@ p {
 }
 
 .cmn__bg {
-  background: url(../img/about/about-bg.png) no-repeat center center;
+  background: url(../images/about-bg.png) no-repeat center center;
   background-size: cover;
 }
 
@@ -4337,6 +4337,19 @@ p {
   transition: all 0.4s;
   font-size: 18px;
 }
+.pagination__box .pagi li span.current {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--title);
+  transition: all 0.4s;
+  font-size: 18px;
+}
+
 .pagination__box .pagi li a i {
   transition: all 0.4s;
 }
@@ -4452,6 +4465,26 @@ p {
 .scope__item .tags li:hover a {
   background: var(--base);
   color: var(--title);
+}
+/* wordpress tagclouds */
+.scope__item .tagcloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.scope__item .tagcloud a {
+  border: 1px solid var(--cusborder);
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 13.5px !important;
+  text-transform: uppercase;
+  color: var(--pra) !important;
+  display: inline-block;
+  transition: all 0.4s;
+}
+.scope__item .tagcloud a:hover {
+  background: var(--base);
+  color: var(--title) !important;
 }
 .scope__item .recent__post li a {
   display: flex;
@@ -4592,6 +4625,9 @@ p {
   font-size: 16px;
   color: var(--pra);
   margin-bottom: 30px;
+}
+.replay__box p a {
+  color: var(--white);
 }
 .replay__box form textarea,
 .replay__box form input {
@@ -4829,6 +4865,7 @@ p {
   position: relative;
   z-index: 1;
   transition: all 0.5s;
+  color: var(--subtitle);
 }
 .cmn--btn::before {
   position: absolute;

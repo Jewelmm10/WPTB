@@ -6,7 +6,7 @@ while ( have_posts() ) : the_post() ;
 ?>
 <div class="blog__bitem mb__cus50" data-aos="fade-up" data-aos-duration="1000">
     <a href="<?php the_permalink(); ?>" class="thumb">
-        <?php the_post_thumbnail(); ?>
+        <?php the_post_thumbnail('post_thumb'); ?>
     </a>
     <div class="content">
         <span class="bdate d-flex align-items-center gap-1 ptext fz-16">

@@ -5,7 +5,7 @@
  */
 $header_options = apply_filters( 'wptb_options_sections_args', [
 	'title'			=> esc_html__( 'Header', 'wptb' ),
-	'icon'			=> 'far fa-arrow-alt-circle-up',
+	'icon'			=> 'fas fa-heading',
 	'fields'		=> [
         [
             'title'     => esc_html__( 'Masthead', 'wptb' ),

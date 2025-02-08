@@ -25,6 +25,7 @@ class WPTB_THEME
          * Actions
          */
         add_action('after_setup_theme', [$this, 'setup_theme']);
+        add_action('widgets_init', [ $this, 'wptb_widgets_init' ]);
     }
     public function setup_theme()
     {
@@ -52,7 +53,9 @@ class WPTB_THEME
         /**
          * Register Image sizes
          */
-        add_image_size('featured-thumbnail',350,233,true);
+        add_image_size('post_thumb', 872, 450, true); 
+        add_image_size('recent_thumb', 100, 100, true); 
+
         add_theme_support('customize-selective-refresh-widgets');
         add_theme_support('automatic-feed-links'); //Add default posts and comments RSS feed links to <head>
         add_theme_support('post-formats', ['aside', 'gallery', 'quote', 'image', 'video']);
@@ -74,5 +77,26 @@ class WPTB_THEME
         }
         add_theme_support('responsive-embeds');
         add_theme_support('editor-styles');
+    }
+    /**
+     * Register widgetized area and update sidebar with default widgets
+     * 
+     */
+    public function wptb_widgets_init()
+    {
+        //default sidebar
+		register_sidebar(
+			[
+				'name'          => __( 'Blog Sidebar', 'wptb' ),
+				'id'            => 'default-sidebar',
+				'before_widget' => '<div class="scope__item mb__cus60">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h4 class="scope__title">',
+				'after_title'   => '</h4>',
+			]
+		);		
+        
+        
+        
     }
 }

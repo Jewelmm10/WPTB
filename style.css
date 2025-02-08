@@ -14,3 +14,59 @@
  * License:           GNU General Public License v2.0 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  */
+
+ /* custom css */
+ .comment-body .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 50px;
+ }
+ .comment-body {
+    display: flex;
+    margin: 20px 0;
+    border-bottom: 1px solid #33332a;
+    padding-bottom: 10px;
+    position: relative;
+}
+.comments-area .comments-title {
+    font-size: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #fff;
+}
+.comment-body a {
+    color: #fff;
+}
+.comment-body a .date {
+    font-size: 13px;
+}
+.comment-body .says {
+    font-size: 16px;
+    text-transform: capitalize;
+    font-style: normal;
+}
+
+
+.comment-body .reply .comment-reply-link {
+    position: absolute;
+    float: right;
+    right: 0;
+    top: 0;
+}
+.comment-body .reply .comment-reply-link {
+    color: #252a37;
+    background: #fff;
+    display: inline-flex;
+    padding: 10px 30px;
+    line-height: 1;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid #ded9d9;
+}
+.comment-body .comment-msg {
+    margin-top: 10px;
+}

@@ -305,10 +305,10 @@ $(function () {
         }
     });
     
-    $('form').submit(function(event) {
-        event.preventDefault();
-        return false;
-    })
+    // $('form').submit(function(event) {
+    //     event.preventDefault();
+    //     return false;
+    // })
 });
 //>> Search Popup <<//
 

@@ -78,10 +78,8 @@ if ( ! function_exists( 'rx_social_profiles' ) ) {
                 } 
             ?>
             </ul>
-		</div>
-	
+		</div>	
         <?php
-       
         
     }
 }
@@ -151,6 +149,85 @@ if ( ! function_exists( 'rx_footer_credit' ) ) {
             $text = $wptb_options['footer_credit'];
         }
         return $text;
+    }
+}
+
+/**
+ * Get framework options 
+ */
+if ( ! function_exists( 'get_framework_options' ) ) {
+    function get_framework_options($get_text) {
+        global $wptb_options;
+        if (isset($wptb_options[$get_text]) &&  $wptb_options[$get_text] != "") :
+            return $wptb_options[$get_text];
+           
+        else :
+            return false;
+        endif;
+    }
+}
+//Breadcrumb
+if (!function_exists('wptb_breadcrumb')) {
+    function wptb_breadcrumb()
+    {
+        $string = '';
+
+        if (is_category()) {
+            $string .= esc_html(get_cat_name( get_queried_object_id() ));
+        } else if (is_singular('post')) {
+            $string .= esc_html__('Blog Detail', 'wptb');
+        } elseif (is_page()) {
+            $string .= esc_html(get_the_title());
+        } elseif (is_tag()) {
+            $string .= esc_html(single_tag_title("", false));
+        } elseif (is_search()) {
+            $string .= esc_html(get_search_query());
+        } elseif (is_404()) {
+            $string .= esc_html__('Page not Found', 'wptb');
+        } elseif (is_author()) {
+            $string .= esc_html__('Author', 'wptb');
+        } else if (is_tax()) {
+            $string .= esc_html(single_cat_title("", false));
+        } elseif (is_archive()) {
+            $string .= esc_html__('Archive', 'wptb');
+        } else if (is_home()) {
+            $string = esc_html__('Articles', 'wptb');
+        }
+
+        return $string;
+    }
+}
+// Get breadCrumb Heading
+if (!function_exists('wptb_breadcrumb_heading')) {
+    function wptb_breadcrumb_heading()
+    {
+        $page_heading = '';
+        if (is_page()) {
+            $page_heading = get_the_title();
+        } else if (is_singular('post')) {
+            $page_heading = esc_html(get_the_title());
+        } else if (is_home()) {
+            if ( get_framework_options ('blog_page_text') != '' && get_framework_options( 'blog_page_text' ) != "") {
+                $page_heading = get_framework_options( 'blog_page_text' );
+            } else {
+                $page_heading = esc_html__('Latest Stories', 'wptb');
+            }
+        } else if (is_404()) {
+            $page_heading = esc_html__('Page not found', 'wptb');
+        } else if (is_archive()) {
+            $page_heading = esc_html__('Blog Archive', 'wptb');
+        } else if (is_search()) {
+            $string = esc_html__('Entire web', 'wptb');
+            if (get_search_query() != "") {
+                $string = get_search_query();
+            }
+            $page_heading = sprintf(esc_html__('Search Results for: %s', 'wptb'), esc_html($string));
+        } else if (is_category()) {
+            $page_heading = esc_html(single_cat_title("", false));
+        } else if (is_tag()) {
+            $page_heading = esc_html__('Tag: ', 'wptb') . esc_html(single_tag_title("", false));
+        } 
+        return $page_heading;
     }
 }
 

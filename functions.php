@@ -61,4 +61,11 @@ function theme_gsap_script(){
 
 add_action( 'wp_enqueue_scripts', 'theme_gsap_script' );
 
+function theme_admin_script(){
+    wp_enqueue_style('b-icon-admin', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css');
+}
+
+
+add_action( 'admin_enqueue_scripts', 'theme_admin_script' );
+
 wptb_get_theme_instance();

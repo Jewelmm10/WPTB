@@ -21,7 +21,18 @@ $general_options = apply_filters( 'wptb_options_sections_args', [
 			'subtitle'	=> esc_html__( 'Upload your site header logo image', 'wptb' ),
 			'id'		=> 'logo',
 			'type'		=> 'media'
-		],			
+		],	
+        [
+			'id'       => 'breadcrum_visibility',
+			'type'     => 'switch',
+			'title'    => esc_html__('Show Breadcrumb', 'wptb'),
+			'desc'     => esc_html__('Want to show breadcrumb or not', 'wptb'),
+			'options'  => array(
+				'0' => 'Hide',
+				'1' => 'Show',
+			),
+			'default'  => '1'
+		],		
 		[
             'title'     => esc_html__( 'Social Media', 'wptb' ),
             'id'        => 'header_section',

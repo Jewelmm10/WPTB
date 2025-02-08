@@ -5,7 +5,7 @@
  */
 $footer_options = apply_filters( 'wptb_options_sections_args', [
 	'title'			=> esc_html__( 'Footer', 'wptb' ),
-	'icon'			=> 'far fa-arrow-alt-circle-down',
+	'icon'			=> 'fas fa-border-none',
 	'fields'		=> [
         [
             'id'        => 'footer_credit_block_start',
@@ -24,7 +24,7 @@ $footer_options = apply_filters( 'wptb_options_sections_args', [
             'id'        => 'footer_credit',
             'type'      => 'textarea',
             'title'     => esc_html__( 'Footer Credit', 'wptb' ),
-            'default'   => '&copy; <a href="' . esc_url( home_url( '/' ) ) . '">' .  get_bloginfo( 'name' ) . '</a> - All Rights Reserved',
+            'default'   => '&copy; <a class="base" href="' . esc_url( home_url( '/' ) ) . '">' .  get_bloginfo( 'name' ) . '</a> - All Rights Reserved',
             'required'  => [ 'footer_credit_block_enable', 'equals', 1 ],
         ],
         [

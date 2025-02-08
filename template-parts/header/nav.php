@@ -9,12 +9,30 @@
 	<div class="container">
 		<div class="header-wrapper">
 		<div class="main__logo">
+			<?php
+				if( has_custom_logo() ) {
+					$logo     = get_theme_mod( 'cusotm-logo' );
+					$logo_url = wp_get_attachment_image_url( $logo, 'full' );
+			?>
+			<a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<img src="<?php echo $logo_url ?>">
+			</a>
+			<?php
+				} elseif( class_exists( 'Redux' ) ) {
+			
+			?>
 			<a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 				<?php 
 					$default_logo_html = '<img src="' . get_template_directory_uri() . '/images/je.png">';
 					echo apply_filters( 'wptb_display_logo', $default_logo_html );
 				?>
 			</a>
+			<?php }else { ?>	
+				<h2>
+				<a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo bloginfo( 'name' ); ?></a>
+				</h2>			
+				
+			<?php } ?>
 		</div>
 		<?php 
 		

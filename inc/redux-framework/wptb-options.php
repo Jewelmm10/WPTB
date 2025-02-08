@@ -20,14 +20,14 @@ if ( ! class_exists('wptb_Options' ) ) {
 
 		public function loading_config() {
 
-			$options 		= array( 'general', 'header', 'footer' );
+			$options 		= array( 'general', 'header', 'blog', 'social-share', 'footer' );
 			$options_dir 	= get_template_directory() . '/inc/redux-framework/options';
 			foreach ( $options as $option ) {
 				$options_file = $option . '-options.php';
 				require_once $options_dir . '/' . $options_file;
 			}
 
-			$sections  	= apply_filters( 'wptb_options_sections_args', [ $general_options, $header_options, $footer_options ] );
+			$sections  	= apply_filters( 'wptb_options_sections_args', [ $general_options, $header_options, $blog_options, $social_share_options, $footer_options ] );
 			$theme 		= wp_get_theme();
 			
 			$opt_name 	= 'wptb_options';

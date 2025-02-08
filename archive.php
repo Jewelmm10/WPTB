@@ -1,21 +1,17 @@
 <?php
 /**
- * Main Template File
- * @package Jagoron
+ * The template for displaying archive pages
+ *
+ * @package wptb
  */
-get_header();
-   if ( ! get_framework_options('breadcrum_visibility' ) == 1 ) {
-      $space = 'pt-120';
-   }
+get_header(); 
+
 ?>
-
-
-<!--<< blog >>-->
-<section class="blog__bsection pb-120 <?php echo $space; ?>">
+<section class="blog__bsection pb-120">
    <div class="container">
       <div class="row g-4">
          <?php
-            $sidebar_opt = get_framework_options('blog_sidebar');
+            $sidebar_opt = 'right';
             $blog_type	=	'col-lg-8 col-xl-8 col-xs-12 col-md-12 col-sm-12';
             if( isset( $sidebar_opt ) && $sidebar_opt == 'no-sidebar' ) {
                $blog_type	=	'col-lg-12 col-xl-12 col-xs-12 col-md-12 col-sm-12';	
@@ -45,5 +41,6 @@ get_header();
       </div>
    </div>
 </section>
-<!--<< blog >>-->
-<?php get_footer();
+<?php 
+
+get_footer();
