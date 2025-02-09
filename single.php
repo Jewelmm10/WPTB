@@ -3,11 +3,17 @@
  * Single post
  * @package wptb
  */
-get_header();?>
+get_header();
+
+   if ( ! get_framework_options('breadcrum_visibility' ) == 1 ) {
+      $space = 'pt-120';
+   }
+
+?>
 
 
 <!--<< blog >>-->
-<section class="blog__bsection pb-120">
+<section class="blog__bsection pb-120 <?php echo $space; ?>">
    <div class="container">
       <div class="row g-4">
          <?php
@@ -43,82 +49,4 @@ get_header();?>
    </div>
 </section>
 <!--<< blog >>-->
-
-<!--<< Footer >>-->
-<footer class="footer__section">
-   <div class="container">
-      <div class="footer__top pt-120 pb-120">
-         <div class="fl" data-aos="fade-up" data-aos-duration="1000">
-            Get In Touch
-         </div>
-         <div class="row g-4">
-            <div class="col-lg-6">
-               <div class="get__content">
-                  <p>
-                     Hello, I’m David Matias, Website & User Interface 
-                     Designer based in London.
-                  </p>
-                  <a href="#0">davidmatias333@gmail.com</a>
-               </div>
-            </div>
-            <div class="col-lg-6">
-               <div class="get__rightcontetn">
-                  <div class="row g-4">
-                     <div class="col-lg-6 col-md-6 col-sm-6">
-                        <a href="#0" class="social__footer">
-                           Facebook
-                           <i class="bi bi-arrow-right"></i>
-                        </a>
-                     </div>
-                     <div class="col-lg-6 col-md-6 col-sm-6">
-                        <a href="#0" class="social__footer">
-                           Instagram
-                           <i class="bi bi-arrow-right"></i>
-                        </a>
-                     </div>
-                     <div class="col-lg-6 col-md-6 col-sm-6">
-                        <a href="#0" class="social__footer">
-                           Dribble
-                           <i class="bi bi-arrow-right"></i>
-                        </a>
-                     </div>
-                     <div class="col-lg-6 col-md-6 col-sm-6">
-                        <a href="#0" class="social__footer">
-                           Webflow
-                           <i class="bi bi-arrow-right"></i>
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <div class="footer__bottom cmn__bg">
-      <div class="container">
-         <div class="copyright">
-         <?php footer_credit(); ?>
-            <!-- <p class="white"> Copyright © 2023 <a href="index-2.html" class="base">Matias.</a> All rights reserved.</p> -->
-            <ul class="terms">
-               <li>
-                  <a href="#0">
-                     Terms & Condition
-                  </a>
-               </li>
-               <li>
-                  <a href="#0">
-                     Privacy Policy
-                  </a>
-               </li>
-            </ul>
-            <a href="#about" class="toparrow">
-               <i class="bi bi-arrow-up-short"></i>
-            </a>
-         </div>
-      </div>
-   </div>
-</footer>
-<!--<< Footer >>-->
-</body>
-</html>
 <?php get_footer();

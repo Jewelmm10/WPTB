@@ -152,20 +152,7 @@ if ( ! function_exists( 'rx_footer_credit' ) ) {
     }
 }
 
-/**
- * Get framework options 
- */
-if ( ! function_exists( 'get_framework_options' ) ) {
-    function get_framework_options($get_text) {
-        global $wptb_options;
-        if (isset($wptb_options[$get_text]) &&  $wptb_options[$get_text] != "") :
-            return $wptb_options[$get_text];
-           
-        else :
-            return false;
-        endif;
-    }
-}
+
 //Breadcrumb
 if (!function_exists('wptb_breadcrumb')) {
     function wptb_breadcrumb()

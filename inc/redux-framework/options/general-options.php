@@ -46,29 +46,5 @@ $general_options = apply_filters( 'wptb_options_sections_args', [
         	'type'		=> 'text',
         	'default'	=> 'Follow Me',
         ],	
-        [
-        	'title'		=> esc_html__( 'Social Links', 'wptb' ),
-            'subtitle'  => esc_html__( 'Header'),
-        	'id'		=> 'repeater_link_id',
-        	'type'		=> 'repeater',
-            'fields'    => [
-                [
-                    'id'            => 'title_field',
-                    'type'          => 'text',
-                    'placeholder'   => esc_html__( 'Title', 'wptb' )
-                ],
-                [
-                    'id'            => 'url_field',
-                    'type'          => 'text',
-                    'placeholder'   => esc_html__( 'Url', 'wptb' )
-                ],
-                [
-                    'id'            => 'icon',
-                    'type'          => 'icon_select',
-                    'placeholder'   => esc_html__( 'Icon', 'wptb' ),
-                    'default'       => 'fab fa-facebook-f',
-                ]
-            ]
-        ],
 	]
 ] );

@@ -20,7 +20,10 @@
     } ?>
 <?php get_template_part('template-parts/header/nav'); ?>
 <?php
-    if ( get_framework_options('breadcrum_visibility' ) == 1){
+    if(is_page_template( 'page-home.php' )) {
+		
+	} else
+    if ( get_framework_options('breadcrum_visibility' ) == 1) {
 ?>
     <div class="container pt-120 pb-120">
         <div class="row g-4 justify-content-center">

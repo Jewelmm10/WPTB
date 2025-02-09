@@ -30,6 +30,7 @@ class WPTB_THEME
     public function setup_theme()
     {
         add_theme_support('title-tag');
+        add_theme_support( 'custom-logo' );
         add_theme_support('custom-logo', [
             'header-text' => ['site-title', 'site-description'],
             'height' => 100,

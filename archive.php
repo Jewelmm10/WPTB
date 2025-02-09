@@ -4,10 +4,14 @@
  *
  * @package wptb
  */
-get_header(); 
+get_header();
+
+   if ( ! get_framework_options('breadcrum_visibility' ) == 1 ) {
+      $space = 'pt-120';
+   }
 
 ?>
-<section class="blog__bsection pb-120">
+<section class="blog__bsection pb-120 <?php echo $space; ?>">
    <div class="container">
       <div class="row g-4">
          <?php

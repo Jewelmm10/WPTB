@@ -6,13 +6,24 @@
  */
 
 /**
+ * Custom functions that act independently of the theme templates.
+ */
+require get_template_directory() . '/inc/functions/extras.php';
+
+/**
  * Redux Framework
  */
-
-require get_template_directory() . '/inc/redux-framework/functions.php';
-require get_template_directory() . '/inc/redux-framework/hooks.php';
-require get_template_directory() . '/inc/redux-framework/wptb-options.php';
-
+if( is_redux_activated() ) {
+    require get_template_directory() . '/inc/redux-framework/functions.php';
+    require get_template_directory() . '/inc/redux-framework/hooks.php';
+    require get_template_directory() . '/inc/redux-framework/wptb-options.php';
+}
+/**
+ * Elementor
+ */
+if( is_elementor_activated() ) {
+    require get_template_directory() . '/inc/elementor/class-elementor.php';
+}
 
 /**
  * structure
