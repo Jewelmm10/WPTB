@@ -15,7 +15,7 @@ get_header();?>
             <div class="banner__content">
                <a href="#0" class="bn__currently">
                   <span class="d-block">
-                     Currently available for freelance 
+                     Currently available for freelance.
                   </span>
                   <span class="d-flex gap-4 align-items-center">
                      worldwide
