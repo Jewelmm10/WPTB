@@ -8,6 +8,10 @@ get_header();
    if ( ! get_framework_options('breadcrum_visibility' ) == 1 ) {
       $space = 'pt-120';
    }
+   if( is_elementor_activated() )
+	{
+		the_content();
+	} else {
 
 ?>
 
@@ -49,4 +53,6 @@ get_header();
    </div>
 </section>
 <!--<< blog >>-->
-<?php get_footer();
+<?php 
+   }
+get_footer();

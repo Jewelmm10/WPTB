@@ -244,7 +244,7 @@ $(document).ready(function () {
 	//>> Wow Animation <<//
 
 	//>> Aos Animation <<//
-	AOS.init();
+	setTimeout(function () { AOS.init(); }, 1000);//AOS.init();
 	//>> Aos Animation <<//
 
 	//>> Scroll To Top <<//

@@ -31,6 +31,19 @@ class WPTB_Heading_Widget extends \Elementor\Widget_Base {
 				'label' => esc_html__( 'WPTB Heading', 'wptb' ),
 			]
 		);
+		$this->add_control(
+            'heading_type',
+            [
+                'label' => esc_html__('Content Style', 'wptb'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'basic',
+                'label_block' => false,
+                'options' => [
+                    'basic' => esc_html__('Basic', 'wptb'),
+                    'stand' => esc_html__('Standard', 'wptb'),
+                ],
+            ]
+        );
         $this->add_control(
 			'title',
 			[
@@ -59,8 +72,24 @@ class WPTB_Heading_Widget extends \Elementor\Widget_Base {
 				],
 				'placeholder' => esc_html__( 'Enter your title', 'wptb' ),
 				'default' => esc_html__( 'Add Your Heading Text Here', 'wptb' ),
+				'condition' => [
+                    'heading_type' => ['basic'],
+                ],
 			]
 		);
+		$this->add_control(
+            'title_img',
+            [
+                'label'   => __('Title Pre-Image', 'wptb'),
+                'type'    => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+				'condition' => [
+                    'heading_type' => ['stand'],
+                ],
+            ]
+        );
         
         $this->end_controls_section();
     }
@@ -68,15 +97,12 @@ class WPTB_Heading_Widget extends \Elementor\Widget_Base {
     // Render Widget Output
     protected function render() {
 
-        $settings = $this->get_settings_for_display();
+        $settings = $this->get_settings_for_display();      
 
-        // if ( ! $settings['wptb_gallery'] ) {
-		// 	return;
-		// }
-
-		//$ids = wp_list_pluck( $settings['wp_gallery'], 'id' );
-      
-        $params        = "";
+        $params['heading_type']   = $settings['heading_type'];
+		$params['title']    	  = $settings['title'];
+        $params['sub_title']   	  = $settings['sub_title'];
+        $params['title_img']   	  = $settings['title_img'];
 
         echo wptb_heading($params);
         

@@ -2566,7 +2566,7 @@ p {
   text-align: center;
 }
 .about__section .singletab .tablinks li.active button {
-  background: var(--);
+  background: var(--base);
   color: var(--title);
 }
 @media (max-width: 991px) {

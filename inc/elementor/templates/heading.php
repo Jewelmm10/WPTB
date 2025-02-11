@@ -2,18 +2,29 @@
 if (!function_exists('wptb_heading')) {
    function wptb_heading($params) {
       
+      if( $params['heading_type'] == 'stand' ) {
+
+      ?>
+      <div class="personal__head text-center">
+         <img src="<?php echo $params['title_img']['url']; ?>" class="mb-30" alt="star">
+         <p class="descrp">
+            <?php echo $params['title']; ?>
+         </p>
+      </div>
+      <?php 
+      } else {
       ?>
       <div class="project__head text-center">
          <span class="common__sub" data-aos="fade-down"
          data-aos-duration="1000">
-           Complete Project 
+            <?php echo $params['sub_title']; ?> 
          </span>
          <h2 class="fw-500" data-aos="fade-down"
          data-aos-duration="2000">
-            Look at my portfolio and give me 
-            your feedback
+         <?php echo $params['title']; ?>
          </h2>
       </div>
       <?php
+      }
    }
 }

@@ -9,6 +9,7 @@
  * Custom functions that act independently of the theme templates.
  */
 require get_template_directory() . '/inc/functions/extras.php';
+require get_template_directory() . '/inc/classes/class-custom-post.php';
 
 /**
  * Redux Framework

@@ -22,7 +22,7 @@ if ( ! function_exists( 'wptb_hero_section' ) ) {
         $hero_title    = esc_html( $params['hero_title'] );
         $animate_title = esc_html( $params['animate_title'] );
         $prefix_img    = esc_url( $params['prefix_img']['url'] ?? '' );
-        $video_link    = esc_url($params['video_link']['url'] ?? '');
+        $video_link    = $params['video_link'];
         $suffix_text   = esc_html( $params['suffix_text'] );
         $hero_img      = esc_url( $params['hero_img']['url'] ?? '' );
         ?>
