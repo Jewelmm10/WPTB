@@ -22,7 +22,6 @@ WPTB is a custom WordPress theme developed with **Redux Framework** and **Elemen
 To ensure full functionality, install and activate the following plugins:
 - **Redux Framework** (for theme options)
 - **Elementor** (for page building)
-- **Google Tag Manager (GTM) Plugin** (for tracking and analytics)
 - **One Click Demo Import** (for demo content setup)
 
 ## One-Click Demo Import
