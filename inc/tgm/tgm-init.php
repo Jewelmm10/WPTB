@@ -42,7 +42,7 @@ function wptb_register_required_plugins() {
 	 */
 	$plugins = array(
 
-		 array(
+		array(
 			'name'               => esc_html__( 'Elementor', 'wptb'), 
 			'slug'               => 'elementor',
 			'source'             => '',
@@ -67,6 +67,17 @@ function wptb_register_required_plugins() {
 			 ),
 			'is_callable'        => '',
 		),
+		array(
+            'name' => esc_html__('One Click Demo Import', 'wptb'),
+            'slug' => 'one-click-demo-import',
+            'source' => '', 
+            'required' => true, 
+            'version' => '', 
+            'force_activation' => false, 
+            'force_deactivation' => false,
+            'external_url' => esc_url('https://downloads.wordpress.org/plugin/one-click-demo-import.3.3.0.zip'),
+            'is_callable' => '',
+        ),
 		array(
             'name' => esc_html__('Contact Form 7', 'wptb'),
             'slug' => 'contact-form-7',

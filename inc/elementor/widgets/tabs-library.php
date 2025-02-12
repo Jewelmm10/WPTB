@@ -155,7 +155,7 @@ class WPTB_Tabs_Library extends Widget_Base {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         <?php  
         
     }

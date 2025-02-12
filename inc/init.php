@@ -34,6 +34,7 @@ require get_template_directory() . '/inc/structure/footer.php';
 require get_template_directory() . '/inc/structure/layout.php';
 require get_template_directory() . '/inc/structure/comments.php';
 require get_template_directory() . '/inc/structure/post.php';
+require get_template_directory() . '/inc/demo/demo-import.php';
 
 /**
  * widgets

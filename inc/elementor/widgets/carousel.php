@@ -86,7 +86,7 @@ class WPTB_Carousel_Widget extends \Elementor\Widget_Base {
         $gallery = $settings['wptb_carousel'];
         ?>
         <div class="sponsor__area pt-120">
-            <h4 class="sponsor__title" data-aos="fade-down" data-aos-duration="1000">
+            <h4 class="sponsor__title" data-aos-duration="1000">
                 <?php echo esc_html($settings['carousel_title']); ?>
             </h4>
             <div class="swiper sponsor__wrap">
