@@ -1,84 +1,52 @@
 <?php
-if ( ! function_exists( 'wptb_hero_section' ) ) {
-    function wptb_hero_section( $params ) {
-        // Default values to prevent errors
-        $defaults = [
-            'sub_title'     => '',
-            'sub_icon'      => [ 'value' => '' ],
-            'hero_title'    => '',
-            'animate_title' => '',
-            'prefix_img'    => [ 'url' => '' ],
-            'video_link'    => '',
-            'suffix_text'   => '',
-            'hero_img'      => [ 'url' => '' ],
-        ];
-
-        // Merge defaults with provided parameters
-        $params = array_merge( $defaults, $params );
-
-        // Assign values safely
-        $sub_title     = $params['sub_title'];
-        $sub_icon      = esc_attr( $params['sub_icon']['value'] ?? '' );
-        $hero_title    = esc_html( $params['hero_title'] );
-        $animate_title = esc_html( $params['animate_title'] );
-        $prefix_img    = esc_url( $params['prefix_img']['url'] ?? '' );
-        $video_link    = $params['video_link'];
-        $suffix_text   = esc_html( $params['suffix_text'] );
-        $hero_img      = esc_url( $params['hero_img']['url'] ?? '' );
+if ( ! function_exists( 'wptb_portfolio_show' ) ) {
+    function wptb_portfolio_show( $args ) {
+        
+        $query = new WP_Query($args);
         ?>
-
-        <section class="banner__section">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-8">
-                        <div class="banner__content">
-                            <?php if ( ! empty( $sub_title ) ) : ?>
-                                <a href="#0" class="bn__currently">
-                                    <span class="d-block gap-4"><?php echo $sub_title; ?>
-                                        <?php if ( ! empty( $sub_icon ) ) : ?>
-                                            <i class="<?php echo $sub_icon; ?>"></i>
-                                        <?php endif; ?>
-                                    </span>
+        <div class="project__wrapone">
+            <div class="row g-4">
+                <?php
+                if ($query->have_posts()) {            
+                    while ($query->have_posts()) { $query->the_post();
+                        $count = 0;                       
+                    ?>
+                    <div class="col-lg-6 col-md-6">
+                        <?php 
+                        // Alternate image size                       
+                        $image_size = ($count % 2 == 0) ? 'portfolio_lg' : 'portfolio_sm';
+                        $count++;
+                        ?>
+                        <div class="project__item cus__mb60 aos-init">
+                            <a href="<?php the_post_thumbnail_url(); ?>" class="thumb mb-30 imgc">
+                                <?php the_post_thumbnail($image_size, ['alt' => get_the_title()]); ?>
+                            </a>
+                            <div class="content d-flex align-items-center justify-content-between gap-2">
+                                <a href="<?php the_permalink(); ?>" class="left__cont">
+                                <?php
+                                    $terms = get_the_terms(get_the_ID(), 'portfolio_cat');                                        
+                                    if (!empty($terms) && !is_wp_error($terms)) {
+                                        echo '<span class="base mb-2 mb-xxl-3 d-block text-uppercase">' . esc_html($terms[0]->name) . '</span>';
+                                    }
+                                ?>
+                                    <h3><?php the_title(); ?></h3>
                                 </a>
-                            <?php endif; ?>
-
-                            <h1>
-                                <span class="hone"><?php echo $hero_title; ?></span>
-                                <span class="d-block designers" data-text="<?php echo $animate_title; ?>">
-                                    <?php echo $animate_title; ?>
-                                </span>
-                            </h1>
-
-                            <?php if ( ! empty( $video_link ) || ! empty( $prefix_img ) ) : ?>
-                                <div class="video__area">
-                                    <?php if ( ! empty( $prefix_img ) ) : ?>
-                                        <img src="<?php echo $prefix_img; ?>" class="vid__arrow" alt="Video Arrow">
-                                    <?php endif; ?>
-
-                                    <?php if ( ! empty( $video_link ) ) : ?>
-                                        <a href="<?php echo $video_link; ?>" class="video__80 video-btn">
-                                            <i class="bi bi-play-fill"></i>
-                                        </a>
-                                    <?php endif; ?>
-
-                                    <?php if ( ! empty( $suffix_text ) ) : ?>
-                                        <span class="proces"><?php echo $suffix_text; ?></span>
-                                    <?php endif; ?>
-                                </div>
-                            <?php endif; ?>
+                                <a href="<?php the_post_thumbnail_url(); ?>" class="common__icon imgc">
+                                    <i class="bi bi-arrow-up-right"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4">
-                        <?php if ( ! empty( $hero_img ) ) : ?>
-                            <div class="banner__thumb" data-aos="fade-up-right" data-aos-duration="300">
-                                <img src="<?php echo $hero_img; ?>" alt="Hero Image">
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                </div>
+                    <?php
+                    }
+                    wp_reset_postdata();
+                } else {
+                    echo '<p>No posts found.</p>';
+                }
+        ?>
             </div>
-        </section>
-        <?php
+        </div>
+    <?php
+ 
     }
 }

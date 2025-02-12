@@ -68,7 +68,7 @@ class WPTB_Hero_Widget extends \Elementor\Widget_Base {
             [
                 'label'   => __( 'Animated Title', 'wptb' ),
                 'type'    => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => 'Creative Visual'
+                'default' => 'Designer'
 
             ]
 		);

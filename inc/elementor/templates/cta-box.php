@@ -22,7 +22,7 @@ if (!function_exists('wptb_call_to_acton')) {
        $cta_social  = $params['cta_social'];
        if ($cta_type == 'cta-basic') {
        ?>
-           <div data-aos="zoom-in">
+           <div>
                <div class="abox">
                    <div class="about__contbox__item">
                        <span class="ptext fz-18 mb-20 d-block"><?php echo esc_html($cta_title); ?></span>

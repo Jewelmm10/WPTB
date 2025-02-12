@@ -56,6 +56,9 @@ class WPTB_THEME
          */
         add_image_size('post_thumb', 872, 450, true); 
         add_image_size('recent_thumb', 100, 100, true); 
+        add_image_size('home_blog', 290, 157, true); 
+        add_image_size('portfolio_lg', 630, 599, true); 
+        add_image_size('portfolio_sm', 630, 440, true); 
 
         add_theme_support('customize-selective-refresh-widgets');
         add_theme_support('automatic-feed-links'); //Add default posts and comments RSS feed links to <head>
@@ -78,6 +81,12 @@ class WPTB_THEME
         }
         add_theme_support('responsive-embeds');
         add_theme_support('editor-styles');
+
+        
+        // Enable Elementor support in the theme
+         add_theme_support('elementor');
+
+
     }
     /**
      * Register widgetized area and update sidebar with default widgets

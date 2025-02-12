@@ -15,12 +15,10 @@ if (!function_exists('wptb_heading')) {
       } else {
       ?>
       <div class="project__head text-center">
-         <span class="common__sub" data-aos="fade-down"
-         data-aos-duration="1000">
+         <span class="common__sub">
             <?php echo $params['sub_title']; ?> 
          </span>
-         <h2 class="fw-500" data-aos="fade-down"
-         data-aos-duration="2000">
+         <h2 class="fw-500">
          <?php echo $params['title']; ?>
          </h2>
       </div>

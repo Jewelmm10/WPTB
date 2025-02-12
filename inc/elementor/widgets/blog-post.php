@@ -145,20 +145,6 @@ class WPTB_Blog_Post extends Widget_Base
         );
 
         $this->add_control(
-            'row_gap',
-            [
-                'label' => __('Row Gap', 'wptb'),
-                'type' => Controls_Manager::SELECT2,
-                'options' => array(
-                    'row--25' => esc_html__('row--25', 'wptb'),
-                    'row--20' => esc_html__('row--20', 'wptb'),
-                    'row--15' => esc_html__('row--15', 'wptb'),
-                ),
-                'default' => 'row--25',
-            ]
-        );
-
-        $this->add_control(
             'post_title_length',
             [
                 'label' => __('Post Title Length', 'wptb'),

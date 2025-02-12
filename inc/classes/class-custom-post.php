@@ -60,9 +60,9 @@ class Custom_Post_Type_Manager {
     }
 }
 
-// Example Usage
+// Portfolio
 new Custom_Post_Type_Manager(
-    'portfolio',  // Custom Post Type name
+    'portfolio', 
     [
         'menu_icon' => 'dashicons-awards',
         'supports'  => ['title', 'editor', 'thumbnail'],
@@ -70,6 +70,20 @@ new Custom_Post_Type_Manager(
     'portfolio_cat',
     [
         'label'        => 'Portfolio Categories',
+        'hierarchical' => true,
+    ]
+);
+
+// Services
+new Custom_Post_Type_Manager(
+    'service',  
+    [
+        'menu_icon' => 'dashicons-text-page',
+        'supports'  => ['title', 'editor', 'thumbnail'],
+    ],
+    'service_cat',
+    [
+        'label'        => 'Service Categories',
         'hierarchical' => true,
     ]
 );

@@ -39,8 +39,8 @@ class WPTB_Heading_Widget extends \Elementor\Widget_Base {
                 'default' => 'basic',
                 'label_block' => false,
                 'options' => [
-                    'basic' => esc_html__('Basic', 'wptb'),
-                    'stand' => esc_html__('Standard', 'wptb'),
+                    'basic'  => esc_html__('Basic', 'wptb'),
+                    'stand'  => esc_html__('Standard', 'wptb'),
                 ],
             ]
         );
@@ -56,7 +56,7 @@ class WPTB_Heading_Widget extends \Elementor\Widget_Base {
 					'active' => true,
 				],
 				'placeholder' => esc_html__( 'Enter your title', 'wptb' ),
-				'default' => esc_html__( 'Add Your Heading Text Here', 'wptb' ),
+				'default' => esc_html__( 'Need a Project?', 'wptb' ),
 			]
 		);
         $this->add_control(
@@ -71,9 +71,9 @@ class WPTB_Heading_Widget extends \Elementor\Widget_Base {
 					'active' => true,
 				],
 				'placeholder' => esc_html__( 'Enter your title', 'wptb' ),
-				'default' => esc_html__( 'Add Your Heading Text Here', 'wptb' ),
+				'default' => esc_html__( 'Let\'s work together', 'wptb' ),
 				'condition' => [
-                    'heading_type' => ['basic'],
+                    'heading_type' => ['basic', 'modern'],
                 ],
 			]
 		);

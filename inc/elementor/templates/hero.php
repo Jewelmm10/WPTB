@@ -52,7 +52,7 @@ if ( ! function_exists( 'wptb_hero_section' ) ) {
                             <?php if ( ! empty( $video_link ) || ! empty( $prefix_img ) ) : ?>
                                 <div class="video__area">
                                     <?php if ( ! empty( $prefix_img ) ) : ?>
-                                        <img src="<?php echo $prefix_img; ?>" class="vid__arrow" alt="Video Arrow">
+                                        <img width="60" src="<?php echo $prefix_img; ?>" class="vid__arrow" alt="Video Arrow">
                                     <?php endif; ?>
 
                                     <?php if ( ! empty( $video_link ) ) : ?>

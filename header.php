@@ -20,9 +20,10 @@
     } ?>
 <?php get_template_part('template-parts/header/nav'); ?>
 <?php
-    if(is_page_template( 'page-home.php' )) {
-		
-	} else
+    if ( is_page_template('page-home.php') || get_post_meta(get_the_ID(), '_elementor_edit_mode', true) ) {
+        return;
+    }
+    
     if ( get_framework_options('breadcrum_visibility' ) == 1) {
 ?>
     <div class="container pt-120 pb-120">

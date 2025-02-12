@@ -15,8 +15,7 @@ if (!function_exists('wptb_awards')) {
         ?>
         <section class="awoard__section">
             <div class="container">
-                <div class="award__wraper table-responsive" data-aos="fade-up"
-                data-aos-duration="2000">
+                <div class="award__wraper table-responsive">
                     <table class="table w-100">
                         <tbody>
                         <tr>

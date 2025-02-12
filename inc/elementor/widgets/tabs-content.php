@@ -93,9 +93,9 @@ class WPTB_Tab_content_Widget extends \Elementor\Widget_Base {
         );
 
         $repeater->add_control(
-            'type',
+            'item_type',
             [
-                'label' => __('Type', 'wptb'),
+                'label' => __('Info Type', 'wptb'),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => [
                     'basic' => __('Basic', 'wptb'),
@@ -114,7 +114,7 @@ class WPTB_Tab_content_Widget extends \Elementor\Widget_Base {
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
                 'condition' => [
-                    'type' => ['img'],
+                    'item_type' => ['img'],
                 ],
             ]
         );
@@ -125,7 +125,7 @@ class WPTB_Tab_content_Widget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => __('https://your-link.com', 'wptb'),
                 'condition' => [
-                    'type' => 'basic',
+                    'item_type' => 'basic',
                 ],
             ]
         );
@@ -180,7 +180,7 @@ class WPTB_Tab_content_Widget extends \Elementor\Widget_Base {
                 'fields' => $child_repeater->get_controls(),
                 'title_field' => '{{{ tabs_social_icon.value }}}',
                 'condition' => [
-                    'type' => 'icon',
+                    'item_type' => 'icon',
                 ],
             ]
         );
@@ -246,11 +246,26 @@ class WPTB_Tab_content_Widget extends \Elementor\Widget_Base {
         $params['section_img']      = $settings['section_img'];
         $params['tabs_title']       = $settings['tabs_title'];
         $params['tabs_desc']        = $settings['tabs_desc'];
-        $params['info_box_list']    = $settings['info_box_list'];
-        $params['info_list_view']   = $settings['info_box_list_view'];
+        $params['info_box_list']  = [];
+
+    // Retrieve and pass item_type in info_box_list
+    if (!empty($settings['info_box_list'])) {
+        foreach ($settings['info_box_list'] as $index => $item) {
+            $params['info_box_list'][$index] = [
+                'tabs_info_box' => $item['tabs_info_box'],
+                'tabs_sub'      => $item['tabs_sub'],
+                'item_type'     => isset($item['item_type']) ? $item['item_type'] : 'basic',
+                'info_box_img'  => isset($item['info_box_img']) ? $item['info_box_img'] : '',
+                'conte_link'    => isset($item['conte_link']) ? $item['conte_link'] : '',
+                'socials'       => isset($item['socials']) ? $item['socials'] : [],
+            ];
+        }
+    }
+
+        $params['info_list_view'] = $settings['info_box_list_view'];
+        $params['content_view']   = $settings['tabs_content_type'];
 
         echo wptb_tabs_section_content($params);
-        
     }
 }
 ?>

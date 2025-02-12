@@ -40,6 +40,12 @@ class WPTB_Elementor_Addons {
         require_once get_template_directory() . '/inc/elementor/widgets/tabs-content.php';
         require_once get_template_directory() . '/inc/elementor/widgets/awards.php';
         require_once get_template_directory() . '/inc/elementor/widgets/blog-post.php';
+        require_once get_template_directory() . '/inc/elementor/widgets/button.php';
+        require_once get_template_directory() . '/inc/elementor/widgets/icon-box.php';
+        require_once get_template_directory() . '/inc/elementor/widgets/working-process.php';
+        require_once get_template_directory() . '/inc/elementor/widgets/query.php';
+        require_once get_template_directory() . '/inc/elementor/widgets/carousel.php';
+        require_once get_template_directory() . '/inc/elementor/widgets/testimonial.php';
 
         //template
         require_once get_template_directory() . '/inc/elementor/templates/hero.php';
@@ -49,6 +55,8 @@ class WPTB_Elementor_Addons {
         require_once get_template_directory() . '/inc/elementor/templates/tab-section-content.php';
         require_once get_template_directory() . '/inc/elementor/templates/awards.php';
         require_once get_template_directory() . '/inc/elementor/templates/blog.php';
+        require_once get_template_directory() . '/inc/elementor/templates/portfolio.php';
+        require_once get_template_directory() . '/inc/elementor/templates/services.php';
     }
 
     /**
@@ -60,12 +68,18 @@ class WPTB_Elementor_Addons {
 
         // Register widget
         $widgets_manager->register(new WPTB_Hero_Widget());
+        $widgets_manager->register(new WPTB_Need_Project());
         $widgets_manager->register(new WPTB_Marquee_Widget());
         $widgets_manager->register(new WPTB_Heading_Widget());
         $widgets_manager->register(new WPTB_Tabs_Library());
         $widgets_manager->register(new WPTB_Tab_content_Widget());
         $widgets_manager->register(new WPTB_Awards_Widget());
         $widgets_manager->register(new WPTB_Blog_Post());
+        $widgets_manager->register(new WPTB_Button());
+        $widgets_manager->register(new WPTB_Working_Widget());
+        $widgets_manager->register(new WPTB_Query_Widget());
+        $widgets_manager->register(new WPTB_Carousel_Widget());
+        $widgets_manager->register(new WPTB_Testimonial_Widget());
     }
 
     /**
