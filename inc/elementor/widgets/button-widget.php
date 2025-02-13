@@ -1,10 +1,9 @@
 <?php
-// If this file is called directly, abort.
-if (!defined('ABSPATH')) {
-    exit;
-}
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+use Elementor\Widget_Base;
+use Elementor\Controls_Manager;
 
-class WPTB_Button extends \Elementor\Widget_Base {
+class WPTB_Button extends Widget_Base {
 
     public function get_name()
     {
@@ -40,7 +39,7 @@ class WPTB_Button extends \Elementor\Widget_Base {
             'wpbt_button_text',
             [
                 'label'       => __('Button Text', 'wptb'),
-                'type'        => \Elementor\Controls_Manager::TEXT,
+                'type'        => Controls_Manager::TEXT,
                 'dynamic' => [
                     'active' => true,
                 ],
@@ -58,7 +57,7 @@ class WPTB_Button extends \Elementor\Widget_Base {
             'wptb_button_link_url',
             [
                 'label'         => esc_html__('Link URL', 'wptb'),
-                'type'          => \Elementor\Controls_Manager::URL,
+                'type'          => Controls_Manager::URL,
                 'label_block'   => true,
                 'default'       => [
                     'url'         => '#',
@@ -72,7 +71,7 @@ class WPTB_Button extends \Elementor\Widget_Base {
             'wptb_button_icon',
             [
                 'label' => esc_html__( 'Icon', 'wptb' ),
-				'type' => \Elementor\Controls_Manager::ICONS,
+				'type' => Controls_Manager::ICONS,
 				'fa4compatibility' => 'arrow',
 				'default' => [
 					'value' => 'fas fa-long-arrow-alt-right',

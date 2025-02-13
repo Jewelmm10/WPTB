@@ -1,7 +1,11 @@
 <?php
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
+use Elementor\Widget_Base;
+use Elementor\Controls_Manager;
+use Elementor\Group_Control_Image_Size;
+use Elementor\Utils;
 
-class WPTB_Marquee_Widget extends \Elementor\Widget_Base {
+class WPTB_Marquee_Widget extends Widget_Base {
     
     // Widget Slug
     public function get_name() {
@@ -36,7 +40,7 @@ class WPTB_Marquee_Widget extends \Elementor\Widget_Base {
 			'wptb_gallery',
 			[
 				'label' => esc_html__( 'Add Images', 'wptb' ),
-				'type' => \Elementor\Controls_Manager::GALLERY,
+				'type' => Controls_Manager::GALLERY,
 				'show_label' => false,
 				'dynamic' => [
 					'active' => true,
@@ -44,7 +48,7 @@ class WPTB_Marquee_Widget extends \Elementor\Widget_Base {
 			]
 		);
         $this->add_group_control(
-			\Elementor\Group_Control_Image_Size::get_type(),
+			Group_Control_Image_Size::get_type(),
 			[
 				'name' => 'thumbnail',
 				'exclude' => [ 'custom' ],
@@ -58,7 +62,7 @@ class WPTB_Marquee_Widget extends \Elementor\Widget_Base {
 			'gallery_columns',
 			[
 				'label' => esc_html__( 'Columns', 'wptb' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
+				'type' => Controls_Manager::SELECT,
 				'default' => 4,
 				'options' => $gallery_columns,
 			]
@@ -67,7 +71,7 @@ class WPTB_Marquee_Widget extends \Elementor\Widget_Base {
 			'gallery_rand',
 			[
 				'label' => esc_html__( 'Order By', 'wptb' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
+				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'' => esc_html__( 'Default', 'wptb' ),
 					'rand' => esc_html__( 'Random', 'wptb' ),
@@ -79,7 +83,7 @@ class WPTB_Marquee_Widget extends \Elementor\Widget_Base {
 			'direction',
 			[
 				'label' => esc_html__( 'Direction', 'wptb' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
+				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'left' => esc_html__( 'To Left', 'wptb' ),
 					'right' => esc_html__( 'To Right', 'wptb' ),
@@ -94,14 +98,7 @@ class WPTB_Marquee_Widget extends \Elementor\Widget_Base {
     // Render Widget Output
     protected function render() {
 
-        $settings = $this->get_settings_for_display();
-
-        // if ( ! $settings['wptb_gallery'] ) {
-		// 	return;
-		// }
-
-		//$ids = wp_list_pluck( $settings['wp_gallery'], 'id' );
-      
+        $settings = $this->get_settings_for_display();      
         $params['wptb_gallery']        = $settings['wptb_gallery'];
         $params['gallery_columns']     = $settings['gallery_columns'];
         $params['gallery_rand']        = $settings['gallery_rand'];

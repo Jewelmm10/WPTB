@@ -71,39 +71,39 @@ class WPTB_Tabs_Library extends Widget_Base {
         $repeater->add_control(
             'tab_nav',
             [
-                'label' => esc_html__('Nav Title', 'wptb'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Static', 'wptb'),
+                'label'     => esc_html__('Nav Title', 'wptb'),
+                'type'      => Controls_Manager::TEXT,
+                'default'   => esc_html__('Static', 'wptb'),
             ]
         );
         $repeater->add_control(
             'recommended_on',
             [
-                'label' => esc_html__('Active', 'wptb'),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('On', 'wptb'),
+                'label'     => esc_html__('Active', 'wptb'),
+                'type'      => Controls_Manager::SWITCHER,
+                'label_on'  => esc_html__('On', 'wptb'),
                 'label_off' => esc_html__('Off', 'wptb'),
-                'default' => 'no',
+                'default'   => 'no',
 
             ]
         );
         $repeater->add_control(
             'library_tab_library',
             [
-                'label' => __('Elementor Library', 'wptb'),
-                'type' => Controls_Manager::SELECT2,
-                'default' => '-1',
-                'options' => $this->get_saved_data(),
+                'label'     => __('Elementor Library', 'wptb'),
+                'type'      => Controls_Manager::SELECT2,
+                'default'   => '-1',
+                'options'   => $this->get_saved_data(),
             ]
         );
 
         $this->add_control(
             'library_tab_items',
             [
-                'type' => Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'show_label' => false,
-                'default' => [
+                'type'          => Controls_Manager::REPEATER,
+                'fields'        => $repeater->get_controls(),
+                'show_label'    => false,
+                'default'       => [
                     [
                         'tab_nav' => esc_html__('Standard Feature', 'wptb'),
 

@@ -1,8 +1,10 @@
 <?php
-use Elementor\Repeater;
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
+use Elementor\Repeater;
+use Elementor\Widget_Base;
+use Elementor\Controls_Manager;
 
-class WPTB_Awards_Widget extends \Elementor\Widget_Base {
+class WPTB_Awards_Widget extends Widget_Base {
     
     // Widget Slug
     public function get_name() {
@@ -36,7 +38,7 @@ class WPTB_Awards_Widget extends \Elementor\Widget_Base {
 			'award_section_title',
 			[
 				'label' => esc_html__( 'Title', 'wptb' ),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'type' => Controls_Manager::TEXTAREA,
 				'ai' => [
 					'type' => 'text',
 				],
@@ -53,7 +55,7 @@ class WPTB_Awards_Widget extends \Elementor\Widget_Base {
             'award_title',
             [
                 'label' => __('Title', 'wptb'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'type' => Controls_Manager::TEXTAREA,
                 'default' => __('Site Of The Day', 'wptb'),
             ]
         );
@@ -61,7 +63,7 @@ class WPTB_Awards_Widget extends \Elementor\Widget_Base {
             'award_sub_title',
             [
                 'label' => __('Sub Title', 'wptb'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'type' => Controls_Manager::TEXTAREA,
                 'default' => __('Css & Animation', 'wptb'),
             ]
         );
@@ -69,7 +71,7 @@ class WPTB_Awards_Widget extends \Elementor\Widget_Base {
             'award_date',
             [
                 'label' => __('Date', 'wptb'),
-                'type' => \Elementor\Controls_Manager::TEXT,
+                'type' => Controls_Manager::TEXT,
                 'default' => __('2018', 'wptb'),
             ]
         );
@@ -77,7 +79,7 @@ class WPTB_Awards_Widget extends \Elementor\Widget_Base {
             'award_lists',
             [
                 'label' => __('Award Box List', 'wptb'),
-                'type' => \Elementor\Controls_Manager::REPEATER,
+                'type' => Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'title_field' => '{{{ award_title }}}',
             ]
@@ -89,7 +91,7 @@ class WPTB_Awards_Widget extends \Elementor\Widget_Base {
             'section_style',
             [
                 'label' => esc_html__('Background Style', 'wptb'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
         
@@ -97,7 +99,7 @@ class WPTB_Awards_Widget extends \Elementor\Widget_Base {
             'background_color',
             [
                 'label' => esc_html__('Background Color', 'wptb'),
-                'type' => \Elementor\Controls_Manager::COLOR,
+                'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .awoard__section' => 'background-color: {{VALUE}} !important;',
                 ],
@@ -108,7 +110,7 @@ class WPTB_Awards_Widget extends \Elementor\Widget_Base {
             'background_image',
             [
                 'label' => esc_html__('Background Image', 'wptb'),
-                'type' => \Elementor\Controls_Manager::MEDIA,
+                'type' => Controls_Manager::MEDIA,
                 'default' => [
                     'url' => '',
                 ],
