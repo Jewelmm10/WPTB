@@ -3,88 +3,95 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
+// Define theme directory and URI constants
+define('WPTB_THEME_DIR', get_template_directory());
+define('WPTB_THEME_URI', get_template_directory_uri());
+
+// Include Bootstrap Icons
+require_once WPTB_THEME_DIR . '/inc/elementor/bootstrap-icons.php';
+
 class WPTB_Elementor_Addons {
     public function __construct() {
-        // Register widgets and category
-        add_action('elementor/widgets/register', [ $this, 'register_widgets' ]);
-        add_action('elementor/elements/categories_registered', [ $this, 'add_category' ]);
-        
-        // Load scripts inside the Elementor editor
-        add_action('elementor/editor/after_enqueue_scripts', [ $this, 'editor_after_register_scripts' ]);
-
-
+        if (!did_action('elementor/loaded')) {
+            return;
+        }
+        add_action('elementor/widgets/register', [$this, 'register_widgets']);
+        add_action('elementor/elements/categories_registered', [$this, 'add_category']);
+        add_action('elementor/editor/after_enqueue_scripts', [$this, 'editor_after_register_scripts']);
     }
-    
+
     public function editor_after_register_scripts() {
         // Load AOS CSS
-        wp_enqueue_style('aos-css', get_template_directory_uri() . '/assets/src/library/css/aos.css'); 
-    
+        wp_enqueue_style('aos-css', WPTB_THEME_URI . '/assets/src/library/css/aos.css', [], '2.3.1');
+
         // Load AOS JS
-        wp_enqueue_script('aos', get_template_directory_uri() . '/assets/src/library/js/aos.js', [], null, true);
-    
-        // Load Editor Script (Make sure this file exists)
-        wp_enqueue_script('editor-aos', get_template_directory_uri() . '/assets/admin/editor.js', ['jquery', 'aos'], null, true);
+        wp_enqueue_script('aos', WPTB_THEME_URI . '/assets/src/library/js/aos.js', [], '2.3.1', true);
 
+        // Load Editor Script with cache-busting
+        $editor_js = WPTB_THEME_DIR . '/assets/admin/editor.js';
+        if (file_exists($editor_js)) {
+            wp_enqueue_script('editor-aos', WPTB_THEME_URI . '/assets/admin/editor.js', ['jquery', 'aos'], filemtime($editor_js), true);
+        }
     }
-    
-    
 
-    /**
-     * Include Widget Files
-     */
     private function include_widgets_files() {
-        require_once get_template_directory() . '/inc/elementor/widgets/hero.php';
-        require_once get_template_directory() . '/inc/elementor/widgets/marquee-image.php';
-        require_once get_template_directory() . '/inc/elementor/widgets/heading.php';
-        require_once get_template_directory() . '/inc/elementor/widgets/tabs-library.php';
-        require_once get_template_directory() . '/inc/elementor/widgets/tabs-content.php';
-        require_once get_template_directory() . '/inc/elementor/widgets/awards.php';
-        require_once get_template_directory() . '/inc/elementor/widgets/blog-post.php';
-        require_once get_template_directory() . '/inc/elementor/widgets/button.php';
-        require_once get_template_directory() . '/inc/elementor/widgets/icon-box.php';
-        require_once get_template_directory() . '/inc/elementor/widgets/working-process.php';
-        require_once get_template_directory() . '/inc/elementor/widgets/query.php';
-        require_once get_template_directory() . '/inc/elementor/widgets/carousel.php';
-        require_once get_template_directory() . '/inc/elementor/widgets/testimonial.php';
+        $widgets = [
+            'hero', 'marquee-img', 'heading', 'tabs-library', 'tabs-content',
+            'awards', 'query', 'button', 'icon-box', 'work-process', 'carousel', 'testimonial'
+        ];
 
-        //template
-        require_once get_template_directory() . '/inc/elementor/templates/hero.php';
-        require_once get_template_directory() . '/inc/elementor/templates/marquee-image.php';
-        require_once get_template_directory() . '/inc/elementor/templates/heading.php';
-        require_once get_template_directory() . '/inc/elementor/templates/cta-box.php';
-        require_once get_template_directory() . '/inc/elementor/templates/tab-section-content.php';
-        require_once get_template_directory() . '/inc/elementor/templates/awards.php';
-        require_once get_template_directory() . '/inc/elementor/templates/blog.php';
-        require_once get_template_directory() . '/inc/elementor/templates/portfolio.php';
-        require_once get_template_directory() . '/inc/elementor/templates/services.php';
+        $templates = ['hero', 'marquee-img', 'heading', 'tabs-content', 'awards', 'blog', 'portfolio', 'services'];
+
+        $widgets_dir = WPTB_THEME_DIR . '/inc/elementor/widgets';
+        $templates_dir = WPTB_THEME_DIR . '/inc/elementor/templates';
+
+        // Include widgets
+        foreach ($widgets as $widget) {
+            $widget_file = "$widgets_dir/{$widget}-widget.php";
+            if (file_exists($widget_file)) {
+                require_once $widget_file;
+            } else {
+                error_log("Widget file not found: $widget_file");
+            }
+        }
+
+        // Include templates
+        foreach ($templates as $template) {
+            $template_file = "$templates_dir/{$template}-template.php";
+            if (file_exists($template_file)) {
+                require_once $template_file;
+            } else {
+                error_log("Template file not found: $template_file");
+            }
+        }
     }
 
-    /**
-     * Register new Elementor widgets
-     */
     public function register_widgets($widgets_manager) {
-        // Include the widget files
         $this->include_widgets_files();
 
-        // Register widget
-        $widgets_manager->register(new WPTB_Hero_Widget());
-        $widgets_manager->register(new WPTB_Need_Project());
-        $widgets_manager->register(new WPTB_Marquee_Widget());
-        $widgets_manager->register(new WPTB_Heading_Widget());
-        $widgets_manager->register(new WPTB_Tabs_Library());
-        $widgets_manager->register(new WPTB_Tab_content_Widget());
-        $widgets_manager->register(new WPTB_Awards_Widget());
-        $widgets_manager->register(new WPTB_Blog_Post());
-        $widgets_manager->register(new WPTB_Button());
-        $widgets_manager->register(new WPTB_Working_Widget());
-        $widgets_manager->register(new WPTB_Query_Widget());
-        $widgets_manager->register(new WPTB_Carousel_Widget());
-        $widgets_manager->register(new WPTB_Testimonial_Widget());
+        $widget_classes = [
+            'hero'          => 'WPTB_Hero_Widget',
+            'marquee-img'   => 'WPTB_Marquee_Widget',
+            'heading'       => 'WPTB_Heading_Widget',
+            'tabs-library'  => 'WPTB_Tabs_Library',
+            'tabs-content'  => 'WPTB_Tab_content_Widget',
+            'awards'        => 'WPTB_Awards_Widget',
+            'button'        => 'WPTB_Button',
+            'work-process'  => 'WPTB_Working_Widget',
+            'query'         => 'WPTB_Query_Widget',
+            'carousel'      => 'WPTB_Carousel_Widget',
+            'testimonial'   => 'WPTB_Testimonial_Widget',
+        ];
+
+        foreach ($widget_classes as $class_name) {
+            if (class_exists($class_name)) {
+                $widgets_manager->register(new $class_name());
+            } else {
+                error_log("Widget class not found: $class_name");
+            }
+        }
     }
 
-    /**
-     * Register a custom Elementor category
-     */
     public function add_category($elements_manager) {
         $elements_manager->add_category(
             'wptb-elements',

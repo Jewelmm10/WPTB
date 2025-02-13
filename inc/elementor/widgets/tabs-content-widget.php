@@ -1,7 +1,11 @@
 <?php
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
+use Elementor\Widget_Base;
+use Elementor\Controls_Manager;
+use Elementor\Utils;
 use Elementor\Repeater;
-class WPTB_Tab_content_Widget extends \Elementor\Widget_Base {
+
+class WPTB_Tab_content_Widget extends Widget_Base {
     
     // Widget Slug
     public function get_name() {
@@ -34,13 +38,13 @@ class WPTB_Tab_content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'tabs_content_type',
             [
-                'label' => esc_html__('Content Style', 'wptb'),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'default' => 'tabs-basic',
+                'label'       => esc_html__('Content Style', 'wptb'),
+                'type'        => Controls_Manager::SELECT,
+                'default'     => 'tabs-basic',
                 'label_block' => false,
                 'options' => [
                     'tabs-basic' => esc_html__('Basic', 'wptb'),
-                    'tabs-list' => esc_html__('List View', 'wptb'),
+                    'tabs-list'  => esc_html__('List View', 'wptb'),
                 ],
             ]
         );
@@ -49,26 +53,26 @@ class WPTB_Tab_content_Widget extends \Elementor\Widget_Base {
             'section_img',
             [
                 'label'   => __('Section Image', 'wptb'),
-                'type'    => \Elementor\Controls_Manager::MEDIA,
+                'type'    => Controls_Manager::MEDIA,
                 'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                    'url' => Utils::get_placeholder_image_src(),
                 ],
             ]
         );
         $this->add_control(
             'tabs_title',
             [
-                'label' => __('Title', 'wptb'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __('Personal Info', 'wptb'),
+                'label'     => __('Title', 'wptb'),
+                'type'      => Controls_Manager::TEXTAREA,
+                'default'   => __('Personal Info', 'wptb'),
             ]
         );
         $this->add_control(
             'tabs_desc',
             [
-                'label' => __('Descriptions', 'wptb'),
-                'type' => \Elementor\Controls_Manager::WYSIWYG,
-                'default' => __('Neque porro quisquam est, qui dolorem ipsum quia dolor sit consectetur,', 'wptb'),
+                'label'     => __('Descriptions', 'wptb'),
+                'type'      => Controls_Manager::WYSIWYG,
+                'default'   => __('Neque porro quisquam est, qui dolorem ipsum quia dolor sit consectetur,', 'wptb'),
             ]
         );
         
@@ -77,41 +81,41 @@ class WPTB_Tab_content_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'tabs_info_box',
             [
-                'label' => __('Info Box Title', 'wptb'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('Email', 'wptb'),
+                'label'     => __('Info Box Title', 'wptb'),
+                'type'      => Controls_Manager::TEXT,
+                'default'   => __('Email', 'wptb'),
             ]
         );
 
         $repeater->add_control(
             'tabs_sub',
             [
-                'label' => __('Sub Title', 'wptb'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('demo@gmail.com', 'wptb'),
+                'label'     => __('Sub Title', 'wptb'),
+                'type'      => Controls_Manager::TEXT,
+                'default'   => __('demo@gmail.com', 'wptb'),
             ]
         );
 
         $repeater->add_control(
             'item_type',
             [
-                'label' => __('Info Type', 'wptb'),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'options' => [
+                'label'     => __('Info Type', 'wptb'),
+                'type'      => Controls_Manager::SELECT,
+                'options'   => [
                     'basic' => __('Basic', 'wptb'),
-                    'icon' => __('Icons', 'wptb'),
-                    'img' => __('Image', 'wptb'),
+                    'icon'  => __('Icons', 'wptb'),
+                    'img'   => __('Image', 'wptb'),
                 ],
-                'default' => 'basic',
+                'default'   => 'basic',
             ]
         );
         $repeater->add_control(
             'info_box_img',
             [
-                'label'   => __('Image', 'wptb'),
-                'type'    => \Elementor\Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                'label'     => __('Image', 'wptb'),
+                'type'      => Controls_Manager::MEDIA,
+                'default'   => [
+                    'url'   => Utils::get_placeholder_image_src(),
                 ],
                 'condition' => [
                     'item_type' => ['img'],
@@ -121,10 +125,10 @@ class WPTB_Tab_content_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'conte_link',
             [
-                'label' => __('Link', 'wptb'),
-                'type' => \Elementor\Controls_Manager::URL,
-                'placeholder' => __('https://your-link.com', 'wptb'),
-                'condition' => [
+                'label'         => __('Link', 'wptb'),
+                'type'          => Controls_Manager::URL,
+                'placeholder'   => __('https://your-link.com', 'wptb'),
+                'condition'     => [
                     'item_type' => 'basic',
                 ],
             ]
@@ -135,10 +139,10 @@ class WPTB_Tab_content_Widget extends \Elementor\Widget_Base {
         $child_repeater->add_control(
             'tabs_social_icon',
             [
-				'label' => esc_html__( 'Icon', 'elementor' ),
-				'type' => \Elementor\Controls_Manager::ICONS,
-				'fa4compatibility' => 'social',
-				'default' => [
+				'label'             => esc_html__( 'Icon', 'elementor' ),
+				'type'              => Controls_Manager::ICONS,
+				'fa4compatibility'  => 'social',
+				'default'           => [
 					'value' => 'fab fa-facebook',
 					'library' => 'fa-brands',
 				],
@@ -167,19 +171,19 @@ class WPTB_Tab_content_Widget extends \Elementor\Widget_Base {
         $child_repeater->add_control(
             'social_link',
             [
-                'label' => __('Social Link', 'wptb'),
-                'type' => \Elementor\Controls_Manager::URL,
+                'label'       => __('Social Link', 'wptb'),
+                'type'        => Controls_Manager::URL,
                 'placeholder' => __('https://your-social-link.com', 'wptb'),
             ]
         );
         $repeater->add_control(
             'socials',
             [
-                'label' => __('Social Icons', 'wptb'),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $child_repeater->get_controls(),
-                'title_field' => '{{{ tabs_social_icon.value }}}',
-                'condition' => [
+                'label'         => __('Social Icons', 'wptb'),
+                'type'          => Controls_Manager::REPEATER,
+                'fields'        => $child_repeater->get_controls(),
+                'title_field'   => '{{{ tabs_social_icon.value }}}',
+                'condition'     => [
                     'item_type' => 'icon',
                 ],
             ]
@@ -187,11 +191,11 @@ class WPTB_Tab_content_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'info_box_list',
             [
-                'label' => __('Info Box', 'wptb'),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'title_field' => '{{{ tabs_info_box }}}',
-                'condition' => [
+                'label'         => __('Info Box', 'wptb'),
+                'type'          => Controls_Manager::REPEATER,
+                'fields'        => $repeater->get_controls(),
+                'title_field'   => '{{{ tabs_info_box }}}',
+                'condition'     => [
                     'tabs_content_type' => 'tabs-basic',
                 ],
             ]
@@ -202,35 +206,35 @@ class WPTB_Tab_content_Widget extends \Elementor\Widget_Base {
         $list_view->add_control(
             'list_title_view',
             [
-                'label' => __('Title', 'wptb'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __('Programming Course', 'wptb'),
+                'label'     => __('Title', 'wptb'),
+                'type'      => Controls_Manager::TEXTAREA,
+                'default'   => __('Programming Course', 'wptb'),
             ]
         );
         $list_view->add_control(
             'list_sub_title',
             [
-                'label' => __('Sub Title', 'wptb'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __('New York University', 'wptb'),
+                'label'     => __('Sub Title', 'wptb'),
+                'type'      => Controls_Manager::TEXTAREA,
+                'default'   => __('New York University', 'wptb'),
             ]
         );
         $list_view->add_control(
             'list_date',
             [
-                'label' => __('Date', 'wptb'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('2011-2013', 'wptb'),
+                'label'     => __('Date', 'wptb'),
+                'type'      => Controls_Manager::TEXT,
+                'default'   => __('2011-2013', 'wptb'),
             ]
         );
         $this->add_control(
             'info_box_list_view',
             [
-                'label' => __('Info Box List', 'wptb'),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $list_view->get_controls(),
+                'label'       => __('Info Box List', 'wptb'),
+                'type'        => Controls_Manager::REPEATER,
+                'fields'      => $list_view->get_controls(),
                 'title_field' => '{{{ list_title_view }}}',
-                'condition' => [
+                'condition'   => [
                     'tabs_content_type' => 'tabs-list',
                 ],
             ]

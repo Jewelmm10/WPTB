@@ -1,7 +1,9 @@
 <?php
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
+use Elementor\Widget_Base;
+use Elementor\Controls_Manager;
 
-class WPTB_Query_Widget extends \Elementor\Widget_Base {
+class WPTB_Query_Widget extends Widget_Base {
 
     public function get_name() {
         return 'query_widget';
@@ -24,7 +26,7 @@ class WPTB_Query_Widget extends \Elementor\Widget_Base {
             'content_section',
             [
                 'label' => __('Query Settings', 'wptb'),
-                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+                'tab'   => Controls_Manager::TAB_CONTENT,
             ]
         );
     
@@ -61,7 +63,7 @@ class WPTB_Query_Widget extends \Elementor\Widget_Base {
             'post_types',
             [
                 'label'    => __('Select Post Types', 'wptb'),
-                'type'     => \Elementor\Controls_Manager::SELECT,
+                'type'     => Controls_Manager::SELECT,
                 'multiple' => true,
                 'options'  => $post_type_options,
                 'default'  => ['post'],
@@ -72,11 +74,10 @@ class WPTB_Query_Widget extends \Elementor\Widget_Base {
             'post_count',
             [
                 'label'   => __('Number of Posts', 'wptb'),
-                'type'    => \Elementor\Controls_Manager::NUMBER,
+                'type'    =>Controls_Manager::NUMBER,
                 'default' => 5,
             ]
-        );
-        
+        );        
         
         $this->end_controls_section();
     }

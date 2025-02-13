@@ -1,7 +1,10 @@
 <?php
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
+use Elementor\Widget_Base;
+use Elementor\Controls_Manager;
+use Elementor\Utils;
 
-class WPTB_Heading_Widget extends \Elementor\Widget_Base {
+class WPTB_Heading_Widget extends Widget_Base {
     
     // Widget Slug
     public function get_name() {
@@ -35,7 +38,7 @@ class WPTB_Heading_Widget extends \Elementor\Widget_Base {
             'heading_type',
             [
                 'label' => esc_html__('Content Style', 'wptb'),
-                'type' => \Elementor\Controls_Manager::SELECT,
+                'type' => Controls_Manager::SELECT,
                 'default' => 'basic',
                 'label_block' => false,
                 'options' => [
@@ -48,7 +51,7 @@ class WPTB_Heading_Widget extends \Elementor\Widget_Base {
 			'title',
 			[
 				'label' => esc_html__( 'Title', 'wptb' ),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'type' => Controls_Manager::TEXTAREA,
 				'ai' => [
 					'type' => 'text',
 				],
@@ -63,7 +66,7 @@ class WPTB_Heading_Widget extends \Elementor\Widget_Base {
 			'sub_title',
 			[
 				'label' => esc_html__( 'Sub Title', 'wptb' ),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'type' => Controls_Manager::TEXTAREA,
 				'ai' => [
 					'type' => 'text',
 				],
@@ -81,9 +84,9 @@ class WPTB_Heading_Widget extends \Elementor\Widget_Base {
             'title_img',
             [
                 'label'   => __('Title Pre-Image', 'wptb'),
-                'type'    => \Elementor\Controls_Manager::MEDIA,
+                'type'    => Controls_Manager::MEDIA,
                 'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                    'url' => Utils::get_placeholder_image_src(),
                 ],
 				'condition' => [
                     'heading_type' => ['stand'],

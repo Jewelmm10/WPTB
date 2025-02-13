@@ -1,8 +1,10 @@
 <?php
-use Elementor\Repeater;
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
+use Elementor\Widget_Base;
+use Elementor\Controls_Manager;
+use Elementor\Repeater;
 
-class WPTB_Working_Widget extends \Elementor\Widget_Base {
+class WPTB_Working_Widget extends Widget_Base {
     
     // Widget Slug
     public function get_name() {
@@ -36,17 +38,17 @@ class WPTB_Working_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'wprocess_title',
             [
-                'label' => __('Title', 'wptb'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('Concept', 'wptb'),
+                'label'     => __('Title', 'wptb'),
+                'type'      => Controls_Manager::TEXT,
+                'default'   => __('Concept', 'wptb'),
             ]
         );
         $this->add_control(
             'wprocess_details',
             [
-                'label' => __('Details', 'wptb'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __('Nemo enim ipsam voluptatem voluptas', 'wptb'),
+                'label'     => __('Details', 'wptb'),
+                'type'      => Controls_Manager::TEXTAREA,
+                'default'   => __('Nemo enim ipsam voluptatem voluptas', 'wptb'),
             ]
         );
 
@@ -55,18 +57,18 @@ class WPTB_Working_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'process_list_title',
             [
-                'label' => __('Process List Title', 'wptb'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __('Reviewing any existing branding', 'wptb'),
+                'label'     => __('Process List Title', 'wptb'),
+                'type'      => Controls_Manager::TEXTAREA,
+                'default'   => __('Reviewing any existing branding', 'wptb'),
             ]
         );
         $this->add_control(
             'wprocess_lists',
             [
-                'label' => __('Work Process List', 'wptb'),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'title_field' => '{{{ process_list_title }}}',
+                'label'         => __('Work Process List', 'wptb'),
+                'type'          => Controls_Manager::REPEATER,
+                'fields'        => $repeater->get_controls(),
+                'title_field'   => '{{{ process_list_title }}}',
             ]
         );
         

@@ -1,11 +1,10 @@
 <?php
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
+use Elementor\Widget_Base;
+use Elementor\Controls_Manager;
+use Elementor\Utils;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
-}
-use Elementor\Repeater;
-
-class WPTB_Need_Project extends \Elementor\Widget_Base {
+class WPTB_Need_Project extends Widget_Base {
 
 	public function get_name() {
 		return 'wptb-icon-box';
@@ -34,7 +33,7 @@ class WPTB_Need_Project extends \Elementor\Widget_Base {
 			'need_title',
 			[
 				'label' => esc_html__( 'Title', 'wptb' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
+				'type' => Controls_Manager::TEXT,
                 'default'   => esc_html__( 'Need a Project?', 'wptb' ),
 				'dynamic' => [
 					'active' => true,
@@ -45,7 +44,7 @@ class WPTB_Need_Project extends \Elementor\Widget_Base {
 			'need_sub_title',
 			[
 				'label' => esc_html__( 'Sub Title', 'wptb' ),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'type' => Controls_Manager::TEXTAREA,
                 'default'   => esc_html__( 'Let\'s work together.', 'wptb' ),
 				'dynamic' => [
 					'active' => true,
@@ -56,9 +55,9 @@ class WPTB_Need_Project extends \Elementor\Widget_Base {
             'need_section_img',
             [
                 'label'   => __('Need Section Image', 'wptb'),
-                'type'    => \Elementor\Controls_Manager::MEDIA,
+                'type'    => Controls_Manager::MEDIA,
                 'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                    'url' => Utils::get_placeholder_image_src(),
                 ],
             ]
         );
@@ -68,7 +67,7 @@ class WPTB_Need_Project extends \Elementor\Widget_Base {
             'need_info_box',
             [
                 'label' => __('Info Box Title', 'wptb'),
-                'type' => \Elementor\Controls_Manager::TEXT,
+                'type' => Controls_Manager::TEXT,
                 'default' => __('Email', 'wptb'),
             ]
         );
@@ -77,7 +76,7 @@ class WPTB_Need_Project extends \Elementor\Widget_Base {
             'need_sub',
             [
                 'label' => __('Info Box Details', 'wptb'),
-                'type' => \Elementor\Controls_Manager::TEXT,
+                'type' => Controls_Manager::TEXT,
                 'default' => __('demo@gmail.com', 'wptb'),
             ]
         );
@@ -85,7 +84,7 @@ class WPTB_Need_Project extends \Elementor\Widget_Base {
             'need_link',
             [
                 'label' => __('Info Box Link', 'wptb'),
-                'type' => \Elementor\Controls_Manager::URL,
+                'type' => Controls_Manager::URL,
                 'placeholder' => __('https://your-link.com', 'wptb'),
                 'default' => [
                     'url' => '',
@@ -125,7 +124,7 @@ class WPTB_Need_Project extends \Elementor\Widget_Base {
             'info_box_list',
             [
                 'label' => __('Info Box', 'wptb'),
-                'type' => \Elementor\Controls_Manager::REPEATER,
+                'type' => Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'title_field' => '{{{ need_info_box }}}',
             ]

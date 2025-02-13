@@ -1,7 +1,11 @@
 <?php
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
+use Elementor\Widget_Base;
+use Elementor\Controls_Manager;
+use Elementor\Utils;
 use Elementor\Repeater;
-class WPTB_Testimonial_Widget extends \Elementor\Widget_Base {
+
+class WPTB_Testimonial_Widget extends Widget_Base {
     
     // Widget Slug
     public function get_name() {
@@ -35,9 +39,9 @@ class WPTB_Testimonial_Widget extends \Elementor\Widget_Base {
             'testimonial_qote_image',
             [
                 'label'   => __('Quote Image', 'wptb'),
-                'type'    => \Elementor\Controls_Manager::MEDIA,
+                'type'    => Controls_Manager::MEDIA,
                 'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                    'url' => Utils::get_placeholder_image_src(),
                 ],
             ]
         );
@@ -45,9 +49,9 @@ class WPTB_Testimonial_Widget extends \Elementor\Widget_Base {
             'shape_image',
             [
                 'label'   => __('Shape Image', 'wptb'),
-                'type'    => \Elementor\Controls_Manager::MEDIA,
+                'type'    => Controls_Manager::MEDIA,
                 'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                    'url' => Utils::get_placeholder_image_src(),
                 ],
             ]
         );
@@ -64,10 +68,10 @@ class WPTB_Testimonial_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
 			'wptb_testimonial_name',
 			[
-				'label' => esc_html__( 'User Name', 'wptb'),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'John Doe', 'wptb'),
-				'dynamic' => [ 'active' => true ],
+				'label'     => esc_html__( 'User Name', 'wptb'),
+				'type'      => Controls_Manager::TEXT,
+				'default'   => esc_html__( 'John Doe', 'wptb'),
+				'dynamic'   => [ 'active' => true ],
 				'ai' => [
 					'active' => false,
 				],
@@ -77,11 +81,11 @@ class WPTB_Testimonial_Widget extends \Elementor\Widget_Base {
 		$repeater->add_control(
 			'wptb_testimonial_designation',
 			[
-				'label' => esc_html__( 'Designation', 'wptb'),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Business Owner', 'wptb'),
-				'dynamic' => [ 'active' => true ],
-				'ai' => [
+				'label'     => esc_html__( 'Designation', 'wptb'),
+				'type'      => Controls_Manager::TEXT,
+				'default'   => esc_html__( 'Business Owner', 'wptb'),
+				'dynamic'   => [ 'active' => true ],
+				'ai'        => [
 					'active' => false,
 				],
 			]
@@ -89,12 +93,12 @@ class WPTB_Testimonial_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
 			'wptb_tesimonial_image',
 			[
-				'label' => __( 'Testimonial Avatar', 'wptb'),
-				'type' => \Elementor\Controls_Manager::MEDIA,
-				'default' => [
-					'url' => \Elementor\Utils::get_placeholder_image_src(),
+				'label'     => __( 'Testimonial Avatar', 'wptb'),
+				'type'      => Controls_Manager::MEDIA,
+				'default'   => [
+					'url'   => Utils::get_placeholder_image_src(),
 				],
-				'ai' => [
+				'ai'        => [
 					'active' => false,
 				],
 			]
@@ -102,18 +106,18 @@ class WPTB_Testimonial_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
 			'wptb_testimonial_description',
 			[
-				'label' => esc_html__( 'Testimonial Description', 'wptb'),
-				'type' => \Elementor\Controls_Manager::WYSIWYG,
-				'default' => esc_html__( 'Add testimonial description here. Edit and place your own text.', 'wptb'),
+				'label'     => esc_html__( 'Testimonial Description', 'wptb'),
+				'type'      => Controls_Manager::WYSIWYG,
+				'default'   => esc_html__( 'Add testimonial description here. Edit and place your own text.', 'wptb'),
 			]
 		);
         $repeater->add_control(
             'wptb_tes_rating_num',
             [
-               'label'       => __( 'Rating Number', 'wptb'),
-               'type' => \Elementor\Controls_Manager::SELECT,
-               'default' => '5',
-               'options' => [
+               'label'      => __( 'Rating Number', 'wptb'),
+               'type'       => Controls_Manager::SELECT,
+               'default'    => '5',
+               'options'    => [
                    '1'   => __( '1', 'wptb'),
                    '2'   => __( '2', 'wptb'),
                    '3'   => __( '3', 'wptb'),
@@ -125,9 +129,9 @@ class WPTB_Testimonial_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'wptb_testimonial_list',
             [
-                'label' => __('Testimonial List', 'wptb'),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
+                'label'     => __('Testimonial List', 'wptb'),
+                'type'      => Controls_Manager::REPEATER,
+                'fields'    => $repeater->get_controls(),
                 'title_field' => '{{{ wptb_testimonial_name }}}',
             ]
         );

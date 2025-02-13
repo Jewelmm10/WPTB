@@ -1,7 +1,10 @@
 <?php
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
+use Elementor\Widget_Base;
+use Elementor\Controls_Manager;
+use Elementor\Group_Control_Image_Size;
 
-class WPTB_Carousel_Widget extends \Elementor\Widget_Base {
+class WPTB_Carousel_Widget extends Widget_Base {
     
     // Widget Slug
     public function get_name() {
@@ -36,7 +39,7 @@ class WPTB_Carousel_Widget extends \Elementor\Widget_Base {
             'carousel_title',
             [
                 'label' => esc_html__('Section Title', 'wptb'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA, // Fixed incorrect control type
+                'type' => Controls_Manager::TEXTAREA, // Fixed incorrect control type
                 'dynamic' => ['active' => true],
 				'default' => esc_html( 'More than 100+ companies trusted us worldwide', 'wptb' )
             ]
@@ -46,7 +49,7 @@ class WPTB_Carousel_Widget extends \Elementor\Widget_Base {
             'wptb_carousel',
 			[
 				'label' => esc_html__( 'Add Images', 'wptb' ),
-				'type' => \Elementor\Controls_Manager::GALLERY,
+				'type' => Controls_Manager::GALLERY,
 				'show_label' => false,
 				'dynamic' => [
 					'active' => true,
@@ -55,7 +58,7 @@ class WPTB_Carousel_Widget extends \Elementor\Widget_Base {
         );
 
         $this->add_group_control(
-            \Elementor\Group_Control_Image_Size::get_type(),
+            Group_Control_Image_Size::get_type(),
             [
                 'name' => 'thumbnail',
                 'exclude' => ['custom'],
@@ -69,7 +72,7 @@ class WPTB_Carousel_Widget extends \Elementor\Widget_Base {
             'carousel_columns',
             [
                 'label' => esc_html__('Columns', 'wptb'),
-                'type' => \Elementor\Controls_Manager::SELECT,
+                'type' => Controls_Manager::SELECT,
                 'default' => 4,
                 'options' => $gallery_columns,
             ]

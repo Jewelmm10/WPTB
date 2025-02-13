@@ -179,6 +179,17 @@ if (!function_exists('wptb_breadcrumb')) {
             $string .= esc_html__('Archive', 'wptb');
         } else if (is_home()) {
             $string = esc_html__('Articles', 'wptb');
+        }elseif (is_singular('portfolio')) { // Check for single portfolio page
+            $terms = get_the_terms(get_the_ID(), 'portfolio_cat'); // Get portfolio category
+            if (!empty($terms) && !is_wp_error($terms)) {
+                $term_names = array();
+                foreach ($terms as $term) {
+                    $term_names[] = esc_html($term->name);
+                }
+                $string .= implode(', ', $term_names); // Show category names
+            } else {
+                $string .= esc_html__('Portfolio', 'wptb'); // Default if no category found
+            }
         }
 
         return $string;
@@ -199,6 +210,8 @@ if (!function_exists('wptb_breadcrumb_heading')) {
             } else {
                 $page_heading = esc_html__('Latest Stories', 'wptb');
             }
+        } else if (is_singular('portfolio')) { 
+            $page_heading = esc_html(get_the_title());
         } else if (is_404()) {
             $page_heading = esc_html__('Page not found', 'wptb');
         } else if (is_archive()) {

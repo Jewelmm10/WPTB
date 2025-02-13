@@ -58,7 +58,7 @@ if ( ! function_exists( 'wptb_tabs_section_content' ) ) {
                                     <?php elseif ($type == 'icon') : ?>
                                         <div class="abox">
                                             <div class="about__contbox__item">
-                                                <span class="ptext fz-18 mb-20 d-block"><span class="ptext fz-18 mb-20 d-block"><?php echo $info['tabs_info_box'] ?></span>
+                                                <span class="ptext fz-18 mb-20 d-block"><?php echo $info['tabs_info_box'] ?></span>
                                                 <ul class="d-flex align-items-center gap-2 gap-xl-4">
                                                     <?php foreach ( $info['socials'] as $social ) : 
                                                         $social_icon = !empty( $social['tabs_social_icon']['value'] ) ? esc_attr( $social['tabs_social_icon']['value'] ) : '';

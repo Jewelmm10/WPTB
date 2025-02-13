@@ -54,19 +54,17 @@
       <div class="container">
          <div class="copyright">
          <?php footer_credit(); ?>
-            <!-- <p class="white"> Copyright © 2023 <a href="index-2.html" class="base">Matias.</a> All rights reserved.</p> -->
-            <ul class="terms">
-               <li>
-                  <a href="#0">
-                     Terms & Condition
-                  </a>
-               </li>
-               <li>
-                  <a href="#0">
-                     Privacy Policy
-                  </a>
-               </li>
-            </ul>
+
+            <?php if ( has_nav_menu( 'wptb-footer-menu' ) ) : 
+               wp_nav_menu(
+                  array(
+                     'theme_location'  => 'wptb-footer-menu',
+                     'menu_class'      => 'terms',
+                     'container_class' => '',
+                  )
+               );
+            endif; ?>
+            
             <a href="#about" class="toparrow">
                <i class="bi bi-arrow-up-short"></i>
             </a>
